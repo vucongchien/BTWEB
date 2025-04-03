@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marin Kitagawa</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-clifford: #da373d;
+      --font-main: "Montserrat";
+    }
+    .background-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1; /* Để nội dung trang hiển thị lên trên */
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: auto;
+      filter: blur(0); /* Mặc định không có blur */
+    }
+    .active-nav {
+      text-decoration: underline;
+    }
+
+    .overlay {
+      @apply absolute inset-0 flex justify-center items-center bg-black/50 text-white text-lg font-bold rounded-lg opacity-0 transition-opacity duration-300;
+    }
+    .image-container:hover .overlay {
+      @apply opacity-100;
+    }
+    .image-container:hover{
+      scale: 105%;
+      transition: ease-in-out 0.1s;
+    }
+    .umbala{
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+
+  </style>
+
+
+
+</head>
+<body class="relative min-h-screen text-[#ff9797] " >
+
+  <img id="backgroundLayer" class="background-layer" alt="ahiihi"></img>
+
+  <!-- Ảnh nền full màn hình -->
+  <!-- <img src="/src/bg_marin.png" class="absolute inset-0 w-full h-full object-cover" /> -->
+
+  <header class="relative flex justify-between items-center py-10 px-20 md:py-16 md:px-32 lg:py-20 lg:px-48 xl:py-24 xl:px-64">
+    <nav class="flex space-x-6 md:space-x-10 lg:space-x-14 xl:space-x-20 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-none">
+      <a href="#Character" 
+         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[6px] 
+                after:bg-[#ff9797] after:rounded-full after:scale-0 after:transition-transform after:duration-300 hover:after:scale-100 nav-link">
+        Character
+      </a>
+      <a href="#Story" 
+         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[6px] 
+                after:bg-[#ff9797] after:rounded-full after:scale-0 after:transition-transform after:duration-300 hover:after:scale-100 nav-link">
+        Story
+      </a>
+      <a href="#Comics" 
+         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[6px] 
+                after:bg-[#ff9797] after:rounded-full after:scale-0 after:transition-transform after:duration-300 hover:after:scale-100 nav-link"
+                onclick="umbala()">
+        Comics
+      </a>
+    </nav>
+  </header>
+
+
+  
+  <section id="Character" class="tab-content" data-background="/src/bg_marin.png">
+    <div class="absolute top-[275px] left-[124px]">
+      <h1 class="text-[110px] leading-[130px] font-bold font-main mb-4">
+      Marin<br />Kitagawa
+      </h1>
+      <p class="ml-2 text-[24px] max-w-xl font-normal font-main">
+      Marin Kitagawa là hóa thân của đam mê thuần khiết, một nữ thần cosplay,
+      sống trọn vẹn với sở thích, cuốn hút mọi ánh nhìn bằng năng lượng bùng nổ
+      và tinh thần tự do!
+      </p>
+    </div>
+  </section>
+
+  <section id="Story" class="tab-content hidden" data-background="/src/assetComics/1220096.png">
+
+  </section>
+
+
+  <section id="Comics" class="tab-content hidden min-h-screen" data-background="/src/assetComics/bg_comics.png">
+    <!-- Phần giới thiệu bìa -->
+    <div class="bg-white/20 backdrop-blur-lg rounded-lg max-w-[90%] w-[1200px] h-auto mx-auto flex flex-wrap justify-center items-center gap-6 p-6">
+  
+      <!-- Box chứa 2 ảnh Season -->
+      <div class="flex-1 min-w-[300px] min-h-[260px] max-h-[260px] bg-white/50 backdrop-blur-md rounded-2xl flex justify-center items-center gap-4 p-4 transition-all duration-300 ease-in-out 
+                  md:min-w-[400px] md:min-h-[320px] md:max-h-[320px] lg:min-w-[500px] lg:min-h-[280px] lg:max-h-[280px]">
+        <!-- Ảnh Season 1 -->
+        <a href="https://www.facebook.com/" target="_blank" class="image-container relative">
+          <img src="/src/assetComics/season_1.jpeg" class="min-w-[120px] max-h-[200px] rounded-lg shadow-lg md:min-w-[160px] md:max-h-[260px] lg:max-h-[250px]" alt="Season 1">
+          <div class="overlay absolute inset-0 flex justify-center items-center bg-black/50 text-white text-lg font-bold rounded-lg hidden">
+            Season 1
+          </div>
+        </a>
+        <!-- Ảnh Season 2 -->
+        <a href="https://www.facebook.com/" target="_blank" class="image-container relative">
+          <img src="/src/assetComics/season_2.jpeg" class="min-w-[120px] max-h-[200px] rounded-lg shadow-lg md:min-w-[160px] md:max-h-[260px] lg:max-h-[250px]" alt="Season 2">
+          <div class="overlay absolute inset-0 flex justify-center items-center bg-black/50 text-white text-lg font-bold rounded-lg hidden">
+            Season 2
+          </div>
+        </a>
+      </div>
+  
+      <!-- Box chứa 5 ảnh Comics -->
+      <div class="flex-1 min-w-[610px] min-h-[260px] max-h-[260px] bg-white/50 backdrop-blur-md rounded-2xl flex justify-center items-center gap-3 p-4 overflow-hidden transition-all duration-300 ease-in-out
+                  md:min-h-[240px] md:max-h-[240px] lg:min-h-[280px] lg:max-h-[280px]">
+        <!-- Ảnh Comic 1 -->
+        <a href="https://www.facebook.com/" target="_blank" class="image-container relative">
+          <img src="/src/assetComics/comic1.png" class=" min-w-[70px] rounded-lg shadow-md" alt="Comic 1">
+          <div class="overlay absolute inset-0 flex justify-center items-center bg-black/50 text-white text-sm font-bold rounded-lg hidden">
+            Comic 1
+          </div>
+        </a>
+        <!-- Ảnh Comic 2 -->
+        <a href="https://www.facebook.com/" target="_blank" class="image-container relative">
+          <img src="/src/assetComics/comic2.png" class=" min-w-[70px] rounded-lg shadow-md" alt="Comic 2">
+          <div class="overlay absolute inset-0 flex justify-center items-center bg-black/50 text-white text-sm font-bold rounded-lg hidden">
+            Comic 2
+          </div>
+        </a>
+        <!-- Ảnh Comic 3 -->
+        <a href="https://www.facebook.com/" target="_blank" class="image-container relative">
+          <img src="/src/assetComics/comic3.png" class=" min-w-[70px] rounded-lg shadow-md" alt="Comic 3">
+          <div class="overlay absolute inset-0 flex justify-center items-center bg-black/50 text-white text-sm font-bold rounded-lg hidden">
+            Comic 3
+          </div>
+        </a>
+        <!-- Ảnh Comic 4 -->
+        <a href="https://www.facebook.com/" target="_blank" class="image-container relative">
+          <img src="/src/assetComics/comic4.png" class=" min-w-[70px] rounded-lg shadow-md" alt="Comic 4">
+          <div class="overlay absolute inset-0 flex justify-center items-center bg-black/50 text-white text-sm font-bold rounded-lg hidden">
+            Comic 4
+          </div>
+        </a>
+        <!-- Ảnh Comic 5 -->
+        <a href="https://www.facebook.com/" target="_blank" class="image-container relative">
+          <img src="/src/assetComics/comic5.png" class=" min-w-[70px] rounded-lg shadow-md" alt="Comic 5">
+          <div class="overlay absolute inset-0 flex justify-center items-center bg-black/50 text-white text-sm font-bold rounded-lg hidden">
+            Comic 5
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <!-- Phần ohaio onii chan (giữ nguyên) -->
+    <div class="relative -mt-11 flex transition-all duration-300">
+      <img src="/src/assetComics/bg_2.png" alt="bg-2" class="w-full object-cover mt-6 umbala">
+      <div class="absolute left-[10%] top-[35%] w-[clamp(100px, 20vw, 350px)] h-auto bg-white/10 backdrop-blur-md rounded-2xl border-2 border-white flex justify-center items-center p-3 umbala">
+        <img src="/src/assetComics/ohaio.svg" alt="Ohaio" class="w-full h-auto">
+      </div>
+      
+      <button class="absolute top-[5%] left-[50%] transform -translate-x-1/2 umbala" onclick="playVideo()">
+        <img src="/src/assetComics/play_video.gif" alt="Play Video" 
+             class="w-[clamp(50px, 15vw, 120px)] rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 max-h-[90vh] object-cover " 
+             style="clip-path: circle(10% at 50% 50%); ">
+      </button>
+    </div>
+
+    <div id="videoContainer" class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-black/50">
+      <iframe id="videoTiktok" src="https://www.tiktok.com/embed/7484971911580060935" width="325" height="580" frameborder="0"  frameborder="0" allowfullscreen ></iframe>
+      <div class="absolute top-10 right-10 bg-white/10 backdrop-blur-md rounded-2xl border-2 border-white min-w-[50px] min-h-[50px] flex justify-center">
+        <button onclick="closeVideo()" class="  text-3xl w-full h-full ">X</button>
+      </div>
+      
+    </div>
+    
+    
+  </section>
+
+
+  
+  
+
+
+
+
+
+
+
+  <script>
+    const tabs=document.querySelectorAll(".tab-content")
+    const links=document.querySelectorAll(".nav-link")
+    const backgroundLayer =document.getElementById("backgroundLayer")
+
+    links.forEach((link,index)=>{
+      link.addEventListener("click",(e)=>{
+        e.preventDefault();
+        tabs.forEach(tab=>tab.classList.add("hidden"))
+        tabs[index].classList.remove("hidden")
+
+        const bgImage=tabs[index].getAttribute("data-background");
+        backgroundLayer.src=bgImage
+        //backgroundLayer.style.backgroundImage = `url(${bgImage})`;
+
+        links.forEach((link)=>link.classList.remove("active-nav"));
+        link.classList.add("active-nav");
+      })
+    })
+
+
+    document.addEventListener("DOMContentLoaded",()=>{
+      const firstBg=tabs[0].getAttribute("data-background")
+      backgroundLayer.style.backgroundImage=`url(${firstBg})`
+    })
+
+    function playVideo(){
+      const videoContainer=document.getElementById("videoContainer");
+      const videoTiktok=document.getElementById("videoTiktok")
+
+      videoContainer.classList.remove('hidden');
+      videoTiktok.play()
+    }
+
+    function closeVideo() {
+      const videoContainer=document.getElementById("videoContainer");
+      const videoTiktok=document.getElementById("videoTiktok")
+      videoContainer.classList.add('hidden');
+      iframe.src = '';
+      videoTiktok.style.display='none'
+      iframe.src="https://www.tiktok.com/embed/7484971911580060935"
+
+    }
+
+    function umbala(){
+      window.addEventListener("scroll",function(){
+        let elements = document.querySelectorAll(".umbala");
+        elements.forEach((el) => {
+            if (window.scrollY > 200) { // Thay đổi số 200 thành giá trị phù hợp
+              el.style.opacity = "1";
+              el.style.transform = "translateY(0)";
+            } 
+        });
+      })
+    }
+    
+  </script>
+  
+
+
+
+</body>
+</html>
