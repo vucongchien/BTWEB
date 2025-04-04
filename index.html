@@ -28,8 +28,17 @@
       height: auto;
       filter: blur(0); /* Mặc định không có blur */
     }
-    .active-nav {
-      text-decoration: underline;
+    .active-nav::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 6px; 
+      background-color: #ff9797;
+      border-radius: 9999px; 
+      transform: scaleX(1) !important; 
+      transition: transform 0.3s ease-in-out;
     }
 
     .overlay {
@@ -62,19 +71,19 @@
   <!-- <img src="/src/bg_marin.png" class="absolute inset-0 w-full h-full object-cover" /> -->
 
   <header class="relative flex justify-between items-center py-10 px-20 md:py-16 md:px-32 lg:py-20 lg:px-48 xl:py-24 xl:px-64">
-    <nav class="flex space-x-6 md:space-x-10 lg:space-x-14 xl:space-x-20 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-none">
+    <nav class="flex space-x-6 md:space-x-10 lg:space-x-14 xl:space-x-20 text-3xl md:text-3xl lg:text-3xl xl:text-3xl font-semibold leading-none">
       <a href="#Character" 
-         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[6px] 
-                after:bg-[#ff9797] after:rounded-full after:scale-0 after:transition-transform after:duration-300 hover:after:scale-100 nav-link">
+         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[3px] 
+                after:bg-[#ff9797] after:rounded-full after:scale-0 after:transition-transform after:duration-300 hover:after:scale-100 nav-link active-nav">
         Character
       </a>
       <a href="#Story" 
-         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[6px] 
+         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[3px] 
                 after:bg-[#ff9797] after:rounded-full after:scale-0 after:transition-transform after:duration-300 hover:after:scale-100 nav-link">
         Story
       </a>
       <a href="#Comics" 
-         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[6px] 
+         class="relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[3px] 
                 after:bg-[#ff9797] after:rounded-full after:scale-0 after:transition-transform after:duration-300 hover:after:scale-100 nav-link"
                 onclick="umbala()">
         Comics
@@ -206,20 +215,24 @@
     const links=document.querySelectorAll(".nav-link")
     const backgroundLayer =document.getElementById("backgroundLayer")
 
-    links.forEach((link,index)=>{
-      link.addEventListener("click",(e)=>{
+    links.forEach((link, index) => {
+      link.addEventListener("click", (e) => {
         e.preventDefault();
-        tabs.forEach(tab=>tab.classList.add("hidden"))
-        tabs[index].classList.remove("hidden")
+        
+        // Ẩn tất cả tab
+        tabs.forEach(tab => tab.classList.add("hidden"));
+        tabs[index].classList.remove("hidden");
 
-        const bgImage=tabs[index].getAttribute("data-background");
-        backgroundLayer.src=bgImage
-        //backgroundLayer.style.backgroundImage = `url(${bgImage})`;
+        // Cập nhật background
+        const bgImage = tabs[index].getAttribute("data-background");
+        backgroundLayer.src = bgImage;
 
-        links.forEach((link)=>link.classList.remove("active-nav"));
+        // Xóa active trên tất cả nav
+        links.forEach(item => item.classList.remove("active-nav"));
+        // Thêm active cho nav được click
         link.classList.add("active-nav");
-      })
-    })
+      });
+    });
 
 
     document.addEventListener("DOMContentLoaded",()=>{
@@ -249,7 +262,7 @@
       window.addEventListener("scroll",function(){
         let elements = document.querySelectorAll(".umbala");
         elements.forEach((el) => {
-            if (window.scrollY > 200) { // Thay đổi số 200 thành giá trị phù hợp
+            if (window.scrollY > 200) { 
               el.style.opacity = "1";
               el.style.transform = "translateY(0)";
             } 
