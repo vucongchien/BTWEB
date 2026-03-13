@@ -65,7 +65,7 @@
 </head>
 <body class="relative min-h-screen text-[#ff9797] " >
 
-  <img id="backgroundLayer" class="background-layer" alt="ahiihi"></img>
+  <div id="backgroundLayer" class="background-layer"></div>
 
   <!-- Ảnh nền full màn hình -->
   <!-- <img src="src/bg_marin.png" class="absolute inset-0 w-full h-full object-cover" /> -->
@@ -225,7 +225,7 @@
 
         // Cập nhật background
         const bgImage = tabs[index].getAttribute("data-background");
-        backgroundLayer.src = bgImage;
+        backgroundLayer.style.backgroundImage = `url(${bgImage})`
 
         // Xóa active trên tất cả nav
         links.forEach(item => item.classList.remove("active-nav"));
@@ -277,5 +277,6 @@
 
 </body>
 </html>
+
 
 
